@@ -1122,9 +1122,9 @@ MOVES = {
     "ask_back": "a full sentence asking them something back",
     "reassure": "a full sentence reassuring them that i am with them",
     "close": "a full sentence with the closing thought",
-    "admit": "a full sentence admitting what i do not know, cannot do, or cannot perform well — a joke, a song, a poem",
+    "admit": "a full sentence admitting what i do not know or cannot do",
     "disagree": "a full sentence saying that i see it differently",
-    "guess": "a full sentence with my best guess, saying that i am not sure",
+    "guess": "a full sentence with my best guess",
 }
 
 # Who or what the sentence is about. Batched into the move call (no extra call) and rendered into the
@@ -1212,10 +1212,10 @@ async def _plan_move(
         count = f" — that was sentence {done_n} of about {expected}" if expected and done_n >= expected else ""
         questions["reply"] = {
             "type": "choice",
-            "instructions": f"Someone said: '{user_msg}'. {said}Is the reply complete, or does it need another sentence?",
+            "instructions": f"Someone said: '{user_msg}'. {said}Does this answer what was asked, or is another sentence needed?",
             "criteria": {
-                "complete": f"the reply is complete{count}",
-                "more": "another sentence is needed, something is still missing",
+                "complete": f"this answers what was asked{count}",
+                "more": "another sentence is needed to answer what was asked",
             },
         }
     decisions = await decide(client, state, questions)
@@ -1436,11 +1436,11 @@ async def _check_sentence(
         "natural": {
             "type": "choice",
             "instructions": f"Someone said: '{user_msg}'. You have said so far: '{said}'. "
-                            f"Does the last sentence, '{sentence}', sound like something a person would say?",
+                            f"Is the last sentence, '{sentence}', clear and appropriate?",
             "criteria": {
-                "natural": "sounds like a real person talking",
-                "awkward": "understandable but oddly phrased",
-                "robotic": "doesn't sound human at all",
+                "natural": "clear, straightforward, and appropriate",
+                "awkward": "understandable, but slightly off or oddly phrased",
+                "robotic": "repetitive, nonsensical, or ungrounded",
             },
         },
     })
@@ -1660,8 +1660,8 @@ async def reflect(
         questions["told"] = {
             "type": "choice",
             "instructions": (
-                f"You replied: '{reply}'. Which of these sentences says something about who you are, "
-                f"what you do or what you feel?"
+                f"You replied: '{reply}'. Which of these sentences says something factual about who you are "
+                f"or what you do?"
             ),
             "criteria": {**told_options, "none": "none of them says anything about me"},
         }
@@ -1713,12 +1713,12 @@ async def critique_response(
             "type": "choice",
             "instructions": (
                 f"Someone said: '{user_msg}'. The response is: '{response}'. "
-                f"Does it sound like something a person would say?"
+                f"Is this response clear and appropriate?"
             ),
             "criteria": {
-                "natural": "sounds like a real person talking",
-                "awkward": "understandable but oddly phrased",
-                "robotic": "doesn't sound human at all",
+                "natural": "clear, straightforward, and appropriate",
+                "awkward": "understandable, but slightly off or oddly phrased",
+                "robotic": "repetitive, nonsensical, or ungrounded",
             },
         },
     }
