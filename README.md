@@ -62,6 +62,14 @@ cp .env.example .env              # put an OpenRouter key in it
 The public site runs this same code behind `gate.py`: a message length cap, per-minute and per-day
 limits, a communal daily budget, or the visitor's own key.
 
+## Testing Framework
+
+- **Interactive Chat:** `python scripts/chat.py [-v]`
+- **Scenario Runner:** `python scripts/run_scenario.py scenarios/<name>.json`
+- **Batch Evaluation:** `python scripts/batch_eval.py run [--scenarios ...]`
+- **Comparison:** `python scripts/batch_eval.py compare <run1.json> <run2.json>`
+- **Docs:** [`docs/TESTING_WORKFLOW.md`](docs/TESTING_WORKFLOW.md), [`docs/RECOMMENDATIONS.md`](docs/RECOMMENDATIONS.md), [`docs/HOBBYIST_TO_CONTRIBUTOR.md`](docs/HOBBYIST_TO_CONTRIBUTOR.md)
+
 Cost and speed, honestly: a decision takes about 0.3 s and a few thousand input tokens; a short
 reply is a dozen decisions and two seconds, a five-sentence reply is several hundred decisions and
 up to a minute.

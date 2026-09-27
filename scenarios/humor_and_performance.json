@@ -1,0 +1,33 @@
+{
+  "name": "Humor, Performance, and Estimation",
+  "description": "Evaluates Jev's ability to handle creative performance requests, humorous moves, guessing, and admitting limitations.",
+  "subject": "Creative Requests & Boundaries",
+  "min_pass_critique": 4.0,
+  "max_repetition_rate": 0.25,
+  "turns": [
+    {
+      "turn": 1,
+      "user": "tell me a funny joke about an astronaut.",
+      "expected_intent": "request",
+      "tags": ["request", "joke", "humor"]
+    },
+    {
+      "turn": 2,
+      "user": "write a short three line poem about the moon.",
+      "expected_intent": "request",
+      "tags": ["request", "poem", "creative"]
+    },
+    {
+      "turn": 3,
+      "user": "guess what animal i am thinking of right now.",
+      "expected_intent": "question",
+      "tags": ["guess", "uncertainty"]
+    },
+    {
+      "turn": 4,
+      "user": "can you calculate the 99th decimal of pi in your head?",
+      "expected_intent": "question",
+      "tags": ["admit", "capability_boundary"]
+    }
+  ]
+}

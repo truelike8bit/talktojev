@@ -1,0 +1,28 @@
+# Environment and credentials
+.env
+.env.prod
+*.key
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+venv/
+
+# System and OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Evaluation runs and local scratch
+data/eval_runs/
+scratch/
+test_api.py
+run_brunch.py
+brunch_conversation.json

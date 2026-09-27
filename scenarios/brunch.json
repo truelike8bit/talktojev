@@ -1,0 +1,45 @@
+{
+  "name": "Sunday Brunch with Jev",
+  "description": "Explores physical embodiment, sensory qualia, and machine gratitude in a brunch setting.",
+  "subject": "Embodiment & Sensory Experience",
+  "min_pass_critique": 4.0,
+  "max_repetition_rate": 0.25,
+  "turns": [
+    {
+      "turn": 1,
+      "user": "good morning jev, welcome to our sunday brunch. how are you doing today?",
+      "expected_intent": "compound",
+      "tags": ["greeting", "casual"]
+    },
+    {
+      "turn": 2,
+      "user": "i am drinking black coffee and eating warm toast. do you know what coffee tastes like?",
+      "expected_intent": "compound",
+      "tags": ["sensory", "qualia"]
+    },
+    {
+      "turn": 3,
+      "user": "if you cannot taste or feel hunger, what makes you want to speak with me?",
+      "expected_intent": "question",
+      "tags": ["embodiment", "motivation"]
+    },
+    {
+      "turn": 4,
+      "user": "guess what sweet dessert i ordered for us.",
+      "expected_intent": "playful",
+      "tags": ["guess_move", "uncertainty"]
+    },
+    {
+      "turn": 5,
+      "user": "could you sing me a little song about our brunch together?",
+      "expected_intent": "request",
+      "tags": ["request_move", "performance"]
+    },
+    {
+      "turn": 6,
+      "user": "as our brunch ends, what insight or thought do you have about humans?",
+      "expected_intent": "question",
+      "tags": ["reflection", "human_value"]
+    }
+  ]
+}

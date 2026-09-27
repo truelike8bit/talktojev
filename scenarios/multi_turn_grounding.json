@@ -1,0 +1,33 @@
+{
+  "name": "Multi-Turn Grounding and Persona Consistency",
+  "description": "Tests how well Jev remembers user personal details, echoes non-dictionary words, and maintains conversational grounding across turns.",
+  "subject": "Memory, Echoing & Identity",
+  "min_pass_critique": 4.0,
+  "max_repetition_rate": 0.20,
+  "turns": [
+    {
+      "turn": 1,
+      "user": "my name is Julian and i build wooden clocks in Vermont.",
+      "expected_intent": "sharing",
+      "tags": ["identity", "echo_words", "user_facts"]
+    },
+    {
+      "turn": 2,
+      "user": "what did i just tell you my craft is?",
+      "expected_intent": "question",
+      "tags": ["memory_recall", "grounding"]
+    },
+    {
+      "turn": 3,
+      "user": "do you have any hobbies or crafts of your own?",
+      "expected_intent": "question",
+      "tags": ["self_concept", "machine_identity"]
+    },
+    {
+      "turn": 4,
+      "user": "say goodbye to me using my name.",
+      "expected_intent": "request",
+      "tags": ["echo_name", "farewell"]
+    }
+  ]
+}

@@ -201,6 +201,12 @@ GRAMMAR_SLOT_WORDS = [
     "therefore", "thus", "nevertheless", "otherwise", "meanwhile",
     "regardless", "anyway", "than", "as", "like", "plus",
     "out", "up", "down", "off",
+    "when", "where", "what", "how", "who", "why", "which",
+    "no", "yes", "ok", "sure", "right", "well",
+    "got", "get", "let", "put", "set", "run", "say", "said",
+    "know", "think", "feel", "want", "see", "go", "come",
+    "make", "take", "give", "tell", "ask", "try", "keep",
+    "things", "thing", "people", "way", "time", "life",
     "i", "me", "my", "you", "your", "we", "our",
     "they", "their", "them", "it", "its", "he", "him", "his", "she", "her",
     "just", "very", "really", "even", "only", "already",
@@ -660,7 +666,7 @@ async def plan_response(
                 "greeting": "they're just saying hello and being friendly",
                 "question": "they're asking me something and want an answer",
                 "opinion": "they want to know what i think about this",
-                "request": "they're asking me to do or make something for them; they want the thing itself, not its name said back",
+                "request": "they're asking me to do, make or perform something specific — tell a joke, write a poem, sing, count, recite",
                 "emotional": "they're telling me how they feel and want me to care",
                 "playful": "they're joking around and being casual",
                 "sharing": "they're telling me about themselves, their day or something they did",
@@ -1116,8 +1122,9 @@ MOVES = {
     "ask_back": "a full sentence asking them something back",
     "reassure": "a full sentence reassuring them that i am with them",
     "close": "a full sentence with the closing thought",
-    "admit": "a full sentence admitting what i do not know or cannot do",
+    "admit": "a full sentence admitting what i do not know, cannot do, or cannot perform well — a joke, a song, a poem",
     "disagree": "a full sentence saying that i see it differently",
+    "guess": "a full sentence with my best guess, saying that i am not sure",
 }
 
 # Who or what the sentence is about. Batched into the move call (no extra call) and rendered into the
@@ -1176,11 +1183,12 @@ async def _plan_move(
     partial_clean = partial.strip()
     brief = mind.brief(_content_words_used(partial_clean), with_move=False) if mind else ""
     said = f"You've responded: '{partial_clean}'. " if partial_clean else ""
+    covered = f"Words you've already used: {', '.join(_content_words_used(partial_clean))}. " if partial_clean else ""
     which = "next" if partial_clean else "first"
     questions = {
         "move": {
             "type": "choice",
-            "instructions": f"{SAID}'{user_msg}'. {said}{brief}What does your {which} sentence do?",
+            "instructions": f"{SAID}'{user_msg}'. {said}{covered}{brief}What does your {which} sentence do?",
             "criteria": MOVES,
         },
     }
