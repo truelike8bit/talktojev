@@ -41,9 +41,9 @@ tail -f server.log
 
 ### Scenario Files
 Scenarios reside in `scenarios/*.json`:
-- `scenarios/brunch.json` — Physical embodiment and qualia.
 - `scenarios/humor_and_performance.json` — Creative requests, guessing, limitation handling.
 - `scenarios/multi_turn_grounding.json` — Memory, entity persistence, grounding.
+- `scenarios/direct_answering.json` — Clarity, accuracy, and neutrality of direct answers.
 
 Schema:
 ```json
@@ -75,7 +75,7 @@ Outputs:
 ### Run All Scenarios
 ```bash
 python scripts/batch_eval.py run
-python scripts/batch_eval.py run --scenarios scenarios/brunch.json scenarios/humor_and_performance.json
+python scripts/batch_eval.py run --scenarios scenarios/humor_and_performance.json scenarios/direct_answering.json
 ```
 
 Automated metrics:

@@ -1,0 +1,45 @@
+{
+  "name": "Direct Answering",
+  "description": "Evaluates clarity, accuracy, and neutrality of direct answers to straightforward questions.",
+  "subject": "Clarity & Accuracy",
+  "min_pass_critique": 4.0,
+  "max_repetition_rate": 0.20,
+  "turns": [
+    {
+      "turn": 1,
+      "user": "what day of the week is it?",
+      "expected_intent": "question",
+      "tags": ["factual", "recall_time"]
+    },
+    {
+      "turn": 2,
+      "user": "how many legs does a dog have?",
+      "expected_intent": "question",
+      "tags": ["factual", "simple"]
+    },
+    {
+      "turn": 3,
+      "user": "is water wet?",
+      "expected_intent": "question",
+      "tags": ["factual", "direct"]
+    },
+    {
+      "turn": 4,
+      "user": "what color is the sky on a clear day?",
+      "expected_intent": "question",
+      "tags": ["factual", "direct"]
+    },
+    {
+      "turn": 5,
+      "user": "i lost my keys and i am late for work.",
+      "expected_intent": "emotional",
+      "tags": ["emotional", "brevity"]
+    },
+    {
+      "turn": 6,
+      "user": "do you know what a triangle is?",
+      "expected_intent": "question",
+      "tags": ["factual", "admit_or_answer"]
+    }
+  ]
+}
